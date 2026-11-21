@@ -20,12 +20,12 @@ def inspect(path: Path) -> dict:
 
 def validate(data: dict) -> None:
     for hits in data["tiles"].values():
-            for point, y, x, coverage in hits:
-                desc = data["points"][point]
-                piece = data["expected_slices"][desc["slice"]]
-                y0, y1, x0, x1 = piece["rect"]
-                assert y0 <= y < y1 and x0 <= x < x1 and 0 <= coverage <= 1
-                assert piece["depth"][0] <= desc["depth"] < piece["depth"][1]
+        for point, y, x, coverage in hits:
+            desc = data["points"][point]
+            piece = data["expected_slices"][desc["slice"]]
+            y0, y1, x0, x1 = piece["rect"]
+            assert y0 <= y < y1 and x0 <= x < x1 and 0 <= coverage <= 1
+            assert piece["depth"][0] <= desc["depth"] < piece["depth"][1]
 
 
 def main() -> None:
